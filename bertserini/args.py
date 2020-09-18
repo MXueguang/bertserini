@@ -1,6 +1,7 @@
 import argparse
 import pprint
 import torch
+from download_util import download
 # from transformers import (WEIGHTS_NAME, BertConfig,
 #                                   BertTokenizer,
 #                                   XLMConfig, XLMForQuestionAnswering,
@@ -240,3 +241,5 @@ else:  # Initializes the distributed backend which will take care of sychronizin
     args.n_gpu = 1
 args.device = device
 
+download(args.train_file)
+download(args.predict_file)

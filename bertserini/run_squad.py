@@ -52,6 +52,7 @@ try:
 except ImportError:
     from tensorboardX import SummaryWriter
 
+from download_util import download
 # from args import *
 
 logger = logging.getLogger(__name__)
@@ -660,6 +661,8 @@ def main():
     parser.add_argument("--threads", type=int, default=1, help="multiple threads for converting example to features")
     args = parser.parse_args()
 
+    download(args.train_file)
+    download(args.predict_file)
     if args.doc_stride >= args.max_seq_length - args.max_query_length:
         logger.warning(
             "WARNING - You've set a doc stride which may be superior to the document length in some "
